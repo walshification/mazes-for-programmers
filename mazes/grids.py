@@ -18,6 +18,10 @@ class Grid:
         self._grid = self._prepare_grid()
         self._configure_cells()
 
+    def __contains__(self, cell: Cell) -> bool:
+        """Return whether cell is found in grid or not."""
+        return any(cell == grid_cell for grid_cell in self.each_cell())
+
     def __len__(self) -> int:
         """Return number of cells in grid."""
         return self.row_length * self.column_length
@@ -26,10 +30,10 @@ class Grid:
         """Return cell found at (row, column) or None."""
         row, column = position
 
-        if 0 > row >= self.row_length:
+        if row < 0 or row >= self.row_length:
             return None
 
-        if 0 > column >= self.column_length:
+        if column < 0 or column >= self.column_length:
             return None
 
         return self._grid[row][column]

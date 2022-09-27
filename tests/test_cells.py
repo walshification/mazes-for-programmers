@@ -1,9 +1,15 @@
-from mazes.cells import Cell
+from mazes import Cell
 
 
 def test_cell_position():
     cell = Cell(2, 3)
     assert (cell.row, cell.column) == (2, 3)
+
+
+def test_cell_looks_nice():
+    cell = Cell(2, 3)
+    assert str(cell) == "(2, 3)"
+    assert repr(cell) == "Cell(2, 3)"
 
 
 def test_cell_can_link():
