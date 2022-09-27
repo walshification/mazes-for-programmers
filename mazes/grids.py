@@ -2,6 +2,7 @@ from random import choice
 from typing import Iterator, List, Optional, Tuple
 
 from mazes.cells import Cell
+from mazes.renderers.ascii_renderer import ASCIIRenderer, Renderer
 
 
 class Grid:
@@ -12,9 +13,12 @@ class Grid:
       column_length (int): the number of cells making up the y-axis.
     """
 
-    def __init__(self, row_length: int, column_length: int) -> None:
+    def __init__(
+        self, row_length: int, column_length: int, renderer: Renderer = ASCIIRenderer
+    ) -> None:
         self.row_length = row_length
         self.column_length = column_length
+        self._renderer = renderer
         self._grid = self._prepare_grid()
         self._configure_cells()
 
@@ -38,11 +42,15 @@ class Grid:
 
         return self._grid[row][column]
 
-    def each_row(self) -> Iterator[List[Cell]]:
+    def __str__(self) -> str:
+        """Return rendered version of the maze."""
+        return self._renderer.render(self)
+
+    def each_row(self) -> Iterator:
         """Return each row of the grid."""
         return (row for row in self._grid)
 
-    def each_cell(self) -> Iterator[Cell]:
+    def each_cell(self) -> Iterator:
         """Return each cell of the grid."""
         return (cell for row in self.each_row() for cell in row)
 
