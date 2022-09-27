@@ -1,4 +1,4 @@
-from mazes.grid import Cell
+from mazes.cells import Cell
 
 
 def test_cell_position():
@@ -38,10 +38,10 @@ def test_cell_can_unlink():
 
 def test_cell_returns_neighbors():
     cell = Cell(1, 1)
-    north = Cell(1, 2)
-    south = Cell(1, 0)
-    east = Cell(2, 1)
-    west = Cell(0, 1)
+    north = Cell(2, 1)
+    south = Cell(0, 1)
+    east = Cell(1, 2)
+    west = Cell(1, 0)
 
     cell.north = north
     cell.south = south
@@ -53,9 +53,9 @@ def test_cell_returns_neighbors():
 
 def test_cell_skips_empty_neighbors():
     cell = Cell(1, 1)
-    north = Cell(1, 2)
-    east = Cell(2, 1)
-    west = Cell(0, 1)
+    north = Cell(2, 1)
+    east = Cell(1, 2)
+    west = Cell(1, 0)
 
     cell.north = north
     # no south

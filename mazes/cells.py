@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, Iterator, List
 
 
 class Cell:
@@ -21,6 +21,19 @@ class Cell:
         self.south = None
         self.east = None
         self.west = None
+
+    def __iter__(self) -> Iterator:
+        """Return a tuple of the cell's row and column positions."""
+        return (i for i in (self.row, self.column))
+
+    def __repr__(self) -> str:
+        """Return cell class name with its position."""
+        class_name = type(self).__name__
+        return "{}({!r}, {!r})".format(class_name, *self)
+
+    def __str__(self) -> str:
+        """Return string representation of a cell's position."""
+        return f"({self.row}, {self.column})"
 
     @property
     def links(self) -> List["Cell"]:
