@@ -38,11 +38,11 @@ class Grid:
 
         return self._grid[row][column]
 
-    def each_row(self) -> Iterator:
+    def each_row(self) -> Iterator[List[Cell]]:
         """Return each row of the grid."""
         return (row for row in self._grid)
 
-    def each_cell(self) -> Iterator:
+    def each_cell(self) -> Iterator[Cell]:
         """Return each cell of the grid."""
         return (cell for row in self.each_row() for cell in row)
 

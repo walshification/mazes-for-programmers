@@ -22,7 +22,7 @@ class Cell:
         self.east = None
         self.west = None
 
-    def __iter__(self) -> Iterator:
+    def __iter__(self) -> Iterator[int]:
         """Return a tuple of the cell's row and column positions."""
         return (i for i in (self.row, self.column))
 
