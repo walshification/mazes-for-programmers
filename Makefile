@@ -4,7 +4,10 @@ BLACK_BIN := $(VENV)/bin/black
 FLAKE8_BIN := $(VENV)/bin/flake8
 MYPY_BIN := $(VENV)/bin/mypy
 PYTEST_BIN := $(VENV)/bin/pytest
+IPYTHON_BIN := $(VENV)/bin/ipython
 PIPENV_RUN := pipenv run
+
+export PIPENV_VENV_IN_PROJECT=1
 
 
 .PHONY: test lint pytest
@@ -19,12 +22,19 @@ lint: $(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN)
 	$(PIPENV_RUN) mypy .
 
 pytest: $(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN)
-	$(PIPENV_RUN) pytest
+	$(PIPENV_RUN) pytest \
+	--cov-config=setup.cfg \
+	--cov=mazes \
+	--cov-report html \
+	--cov-report term-missing
 
 fmt: $(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN)
 	$(PIPENV_RUN) black .
 	$(PIPENV_RUN) isort .
 	$(PIPENV_RUN) autoflake --in-place --remove-unused-variables -r .
 
-$(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN):
+shell: $(IPYTHON_BIN)
+	$(PIPENV_RUN) ipython
+
+$(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN) $(IPYTHON_BIN):
 	pipenv install --dev
