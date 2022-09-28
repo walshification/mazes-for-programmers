@@ -31,7 +31,12 @@ pytest: $(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN)
 fmt: $(BLACK_BIN) $(FLAKE8_BIN) $(AUTOFLAKE_BIN) $(MYPY_BIN) $(PYTEST_BIN)
 	$(PIPENV_RUN) black .
 	$(PIPENV_RUN) isort .
-	$(PIPENV_RUN) autoflake --in-place --remove-unused-variables -r .
+	$(PIPENV_RUN) autoflake \
+	--in-place \
+	--remove-unused-variables \
+	--remove-all-unused-imports \
+	--recursive \
+	.
 
 shell: $(IPYTHON_BIN)
 	$(PIPENV_RUN) ipython

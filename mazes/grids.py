@@ -2,7 +2,7 @@ from random import choice
 from typing import Iterator, List, Optional, Tuple
 
 from mazes.cells import Cell
-from mazes.renderers.ascii_renderer import ASCIIRenderer, Renderer
+from mazes.renderers import ASCIIRenderer, Renderer
 
 
 class Grid:
@@ -14,13 +14,16 @@ class Grid:
     """
 
     def __init__(
-        self, row_length: int, column_length: int, renderer: Renderer = ASCIIRenderer
+        self,
+        row_length: int,
+        column_length: int,
+        renderer: Optional[Renderer] = None,
     ) -> None:
         self.row_length = row_length
         self.column_length = column_length
-        self._renderer = renderer
         self._grid = self._prepare_grid()
         self._configure_cells()
+        self._renderer = renderer or ASCIIRenderer()
 
     def __contains__(self, cell: Cell) -> bool:
         """Return whether cell is found in grid or not."""

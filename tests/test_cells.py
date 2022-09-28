@@ -1,4 +1,4 @@
-from mazes import Cell
+from mazes.cells import Cell
 
 
 def test_cell_position():

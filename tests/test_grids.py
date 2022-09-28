@@ -1,4 +1,5 @@
-from mazes import Cell, Grid
+from mazes.cells import Cell
+from mazes.grids import Grid
 
 
 def test_grid_creates_itself():

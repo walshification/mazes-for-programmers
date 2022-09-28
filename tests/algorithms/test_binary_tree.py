@@ -1,4 +1,5 @@
-from mazes import BinaryTree, Grid
+from mazes.algorithms import BinaryTree
+from mazes.grids import Grid
 
 
 def test_applies_algortihm_to_each_cell():

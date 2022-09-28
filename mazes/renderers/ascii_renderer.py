@@ -1,23 +1,17 @@
-from typing_extensions import Protocol
-
-from mazes.cells import Cell
-# from mazes.grids import Grid
+from typing import Protocol
 
 
 class Renderer(Protocol):
     """Protocol definition for renderers."""
 
-    @classmethod
-    def render(cls, grid: "Grid") -> str:
+    def render(cls, grid) -> str:
         ...
 
 
-
-class ASCIIRenderer:
+class ASCIIRenderer(Renderer):
     """Renders a maze to the terminal with ASCII art."""
 
-    @classmethod
-    def render(cls, grid: "Grid") -> str:
+    def render(cls, grid) -> str:
         """Draw the grid with ASCII art."""
         output = []
         # Build top row
