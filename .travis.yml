@@ -16,7 +16,7 @@ before_install:
   - pip install pipenv
 
 install:
-  - pipenv install --dev
+  - make install
 
 script:
   - make test
