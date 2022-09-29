@@ -11,7 +11,7 @@ export PIPENV_VENV_IN_PROJECT=1
 export PIPENV_NO_SPIN=1
 
 
-.PHONY: fmt lint pytest shell test
+.PHONY: fmt install lint pytest shell test
 
 test: lint pytest
 
