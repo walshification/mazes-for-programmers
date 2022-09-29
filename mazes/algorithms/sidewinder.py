@@ -14,13 +14,14 @@ class Sidewinder:
       3. Move to the next row.
     """
 
-    @staticmethod
-    def on(grid: Grid) -> Grid:
+    @classmethod
+    def on(cls, grid: Grid) -> Grid:
         """For each cell of grid, choose at random a northern or
         eastern neighbor to link it to.
 
         Returns: (Grid)
         """
+        grid.algorithm = cls.__name__.lower()
         for row in grid.each_row():
             run = []
 
