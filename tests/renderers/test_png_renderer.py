@@ -2,7 +2,7 @@ from unittest.mock import call, create_autospec
 
 from PIL import Image, ImageDraw
 
-from mazes.grids import Grid
+from mazes.components import Grid
 from mazes.renderers import PNGRenderer
 
 

@@ -1,7 +1,7 @@
 from random import choice
 from typing import Iterator, List, Optional, Tuple
 
-from mazes.cells import Cell
+from mazes.components.cells import Cell
 from mazes.renderers import ASCIIRenderer, Renderer
 
 

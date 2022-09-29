@@ -1,6 +1,6 @@
 from random import choice
 
-from mazes.grids import Grid
+from mazes.components import Grid
 
 
 class Sidewinder:

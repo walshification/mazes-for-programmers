@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-from mazes.grids import Grid
+from mazes.components import Grid
 from mazes.renderers import ASCIIRenderer
 
 
