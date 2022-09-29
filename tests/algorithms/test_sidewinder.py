@@ -1,5 +1,5 @@
 from mazes.algorithms import Sidewinder
-from mazes.grids import Grid
+from mazes.components import Grid
 
 
 def test_applies_algortihm_to_each_cell():

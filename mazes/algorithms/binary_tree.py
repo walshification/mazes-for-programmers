@@ -1,6 +1,6 @@
 from random import choice
 
-from mazes.grids import Grid
+from mazes.components import Grid
 
 
 class BinaryTree:
@@ -12,13 +12,14 @@ class BinaryTree:
       3. If a cell has an edge, choose the other path.
     """
 
-    @staticmethod
-    def on(grid: Grid) -> Grid:
+    @classmethod
+    def on(cls, grid: Grid) -> Grid:
         """For each cell of grid, choose at random a northern or
         eastern neighbor to link it to.
 
         Returns: (Grid)
         """
+        grid.algorithm = cls.__name__.lower()
         for cell in grid.each_cell():
             neighbors = [
                 neighbor

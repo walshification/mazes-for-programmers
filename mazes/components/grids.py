@@ -1,7 +1,7 @@
 from random import choice
 from typing import Iterator, List, Optional, Tuple
 
-from mazes.cells import Cell
+from mazes.components.cells import Cell
 from mazes.renderers import ASCIIRenderer, Renderer
 
 
@@ -21,6 +21,7 @@ class Grid:
     ) -> None:
         self.row_length = row_length
         self.column_length = column_length
+        self.algorithm: Optional[str] = None
         self._grid = self._prepare_grid()
         self._configure_cells()
         self._renderer = renderer or ASCIIRenderer()
